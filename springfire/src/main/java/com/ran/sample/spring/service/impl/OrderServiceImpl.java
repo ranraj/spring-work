@@ -1,10 +1,13 @@
 package com.ran.sample.spring.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.ran.sample.spring.model.OrderFactory;
 import com.ran.sample.spring.model.Orders;
 import com.ran.sample.spring.model.Orders.Order;
 import com.ran.sample.spring.service.OrderService;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 
 	@Override
