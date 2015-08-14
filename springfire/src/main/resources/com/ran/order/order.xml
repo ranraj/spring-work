@@ -1,0 +1,5 @@
+<orders cmd="confirm_add" env="stage">
+<order order_id="7188872">
+<transactions>5261363</transactions>
+</order>
+</orders>
