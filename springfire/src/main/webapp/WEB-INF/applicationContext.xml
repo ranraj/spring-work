@@ -11,4 +11,7 @@
     <bean id="contents" class="java.io.FileInputStream">     
             <constructor-arg value="classpath:com/ran/order/order.xml" type="java.io.File" />              
 	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize" value="50000000"/>
+	</bean>
 </beans>
