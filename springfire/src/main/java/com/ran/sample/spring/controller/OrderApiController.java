@@ -1,6 +1,6 @@
 package com.ran.sample.spring.controller;
 
-import com.ran.sample.spring.model.Order;
+import com.ran.sample.spring.model.SaleOrder;
 import com.ran.sample.spring.service.impl.OrderServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class OrderApiController {
 
     // Simple / means fetch all
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Order> getAllOrder() {
+    public List<SaleOrder> getAllOrder() {
         return orderService.getAllOrders();
     }
 

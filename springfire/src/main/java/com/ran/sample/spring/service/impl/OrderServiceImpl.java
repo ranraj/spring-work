@@ -1,8 +1,10 @@
 package com.ran.sample.spring.service.impl;
 
-import com.ran.sample.spring.model.Order;
-import com.ran.sample.spring.model.OrderFactory;
+import com.ran.sample.spring.model.SaleOrder;
+import com.ran.sample.spring.repo.SaleOrderRepository;
+import com.ran.sample.spring.service.OrderService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,18 +12,12 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
 
+    @Autowired
+    private SaleOrderRepository saleOrderRepository;
+
     @Override
-    public List<Order> getAllOrders() {
-
-        OrderFactory of = new OrderFactory();
-        Order order = of.createOrder();
-
-        order.setOrderId(11);
-        order.setTransactions(1);
-
-        List<Order> orders = of.createOrders();
-        orders.add(order);
-        return orders;
+    public List<SaleOrder> getAllOrders() {
+        return saleOrderRepository.findAll();
     }
 
 }
