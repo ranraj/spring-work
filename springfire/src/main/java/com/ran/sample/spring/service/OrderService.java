@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface OrderService {
     List<SaleOrder> getAllOrders();
+
+    SaleOrder createOrder(SaleOrder saleOrder);
+
+    List<SaleOrder> getByItem(String item);
 }

@@ -4,6 +4,8 @@ import com.ran.sample.spring.model.SaleOrder;
 import com.ran.sample.spring.service.impl.OrderServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +29,16 @@ public class OrderApiController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<SaleOrder> getAllOrder() {
         return orderService.getAllOrders();
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public @ResponseBody SaleOrder createOrder(@RequestBody SaleOrder saleOrder) {
+        return orderService.createOrder(saleOrder);
+    }
+
+    @RequestMapping(value = "/item/{item}", method = RequestMethod.GET)
+    public @ResponseBody List<SaleOrder> getByItem(@PathVariable String item) {
+        return orderService.getByItem(item);
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
