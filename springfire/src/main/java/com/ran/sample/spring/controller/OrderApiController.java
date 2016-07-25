@@ -1,7 +1,9 @@
 package com.ran.sample.spring.controller;
 
-import com.ran.sample.spring.model.SaleOrder;
-import com.ran.sample.spring.service.impl.OrderServiceImpl;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,17 +15,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.List;
+import com.ran.sample.spring.model.SaleOrder;
+import com.ran.sample.spring.service.OrderService;
 
 @RestController
 @RequestMapping("/order")
 public class OrderApiController {
 
     @Autowired
-    private OrderServiceImpl orderService;
+    private OrderService orderService;
 
     // Simple / means fetch all
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -60,11 +60,12 @@ public class OrderApiController {
         }
     }
 
-    public OrderServiceImpl getOrderService() {
-        return orderService;
-    }
+	public OrderService getOrderService() {
+		return orderService;
+	}
 
-    public void setOrderService(OrderServiceImpl orderService) {
-        this.orderService = orderService;
-    }
+	public void setOrderService(OrderService orderService) {
+		this.orderService = orderService;
+	}
+  
 }

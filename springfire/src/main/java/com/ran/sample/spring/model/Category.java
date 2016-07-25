@@ -1,10 +1,16 @@
 package com.ran.sample.spring.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "SALE_CATEGORY")
@@ -12,7 +18,7 @@ public class Category {
 	private long id;
 	private String name;
 	private String description;
-	
+	private List<SaleItem> items;
 	protected Category(){}
 	
 	public Category(String name,String description){
@@ -32,6 +38,16 @@ public class Category {
 	
 	public String getDescription() {
 		return description;
+	}
+	
+	@OneToMany(mappedBy="category",cascade=CascadeType.ALL)	
+	@JsonIgnore			//@JsonIgnore To avoid cyclic bidirectional fetch call while building REST response  
+	public List<SaleItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<SaleItem> items) {
+		this.items = items;
 	}
 
 	public void setId(long id) {
