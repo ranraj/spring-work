@@ -5,6 +5,6 @@ insert into SALE_ORDER(item, amount) values ('charger', 1)
 
 insert into SALE_CATEGORY(id,name, description) values (1,'Electonics','Electronic item like laptops and mobiles')
 
-insert into SALE_ITEM(name, mrp,category_id) values ('laptop', 101,1)
+insert into SALE_ITEM(name, mrp,item_category_id) values ('laptop', 101,1)
 
 

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -34,6 +35,7 @@ public class SaleItem {
 		return mrp;
 	}
 	@ManyToOne
+	@JoinColumn(name ="item_category_id")
 	public Category getCategory() {
 		return category;
 	}
@@ -53,7 +55,5 @@ public class SaleItem {
 	@Override
 	public String toString() {
 		return "SaleItem [id=" + id + ", name=" + name + ", mrp=" + mrp + ", category=" + category + "]";
-	}
-	
-	
+	}		
 }
