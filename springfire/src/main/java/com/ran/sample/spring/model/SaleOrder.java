@@ -7,10 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "saleorder")
-public class SaleOrder {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+@Table(name = "SALE_ORDER")
+public class SaleOrder {    
     private long orderId;
     private String item;
     private double amount;
@@ -22,7 +20,9 @@ public class SaleOrder {
         this.item = item;
         this.amount = amount;
     }
-
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getOrderId() {
         return orderId;
     }
@@ -34,9 +34,22 @@ public class SaleOrder {
     public double getAmount() {
         return amount;
     }
+    
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
+	}
 
-    @Override
-    public String toString() {
-        return String.format("SaleOrder [orderId=%d, item='%s', lastName='%s']", orderId, item, amount);
-    }
+	public void setItem(String item) {
+		this.item = item;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	@Override
+	public String toString() {
+		return "SaleOrder [orderId=" + orderId + ", item=" + item + ", amount=" + amount + "]";
+	}
+    
 }
