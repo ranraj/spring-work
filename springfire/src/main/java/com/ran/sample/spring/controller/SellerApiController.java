@@ -1,22 +1,17 @@
 package com.ran.sample.spring.controller;
 
 import com.ran.sample.spring.dto.SellerDTO;
-import com.ran.sample.spring.exceptions.ValidationError;
 import com.ran.sample.spring.model.Seller;
 import com.ran.sample.spring.service.SellerService;
-import com.ran.sample.spring.utils.ValidationErrorBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -57,15 +52,4 @@ public class SellerApiController {
     public void setSellerService(SellerService sellerService) {
         this.sellerService = sellerService;
     }
-
-    @ExceptionHandler
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public ValidationError handleException(MethodArgumentNotValidException exception) {
-        return createValidationError(exception);
-    }
-
-    private ValidationError createValidationError(MethodArgumentNotValidException e) {
-        return ValidationErrorBuilder.fromBindingErrors(e.getBindingResult());
-    }
-
 }
