@@ -25,7 +25,6 @@ public class SellerApiController {
     @Autowired
     private SellerService sellerService;
 
-    // Simple / means fetch all
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Seller> getAllOrder() {
         return sellerService.getAllSellers();

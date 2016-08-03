@@ -6,21 +6,12 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import java.util.Set;
 
-public class SellerDTO {
-
-    private long id;
+public class SellerDTO extends AbstractDTO {
 
     @NotBlank(message = "Seller name must not be blank!")
     private String name;
+
     private Set<SaleItem> items;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
