@@ -1,5 +1,6 @@
 package com.ran.sample.spring.service.impl;
 
+import com.ran.sample.spring.dto.SellerDTO;
 import com.ran.sample.spring.model.Seller;
 import com.ran.sample.spring.repo.SellerRepository;
 import com.ran.sample.spring.service.SellerService;
@@ -19,8 +20,21 @@ public class SellerServiceImpl implements SellerService {
         return sellerRepository.findAll();
     }
 
-    public Seller createSeller(Seller seller) {
-        return sellerRepository.save(seller);
+    public SellerDTO createSeller(SellerDTO sellerDto) throws Exception {
+        Seller seller = null;
+        if (sellerDto != null) {
+            seller = new Seller();
+            seller.setName(sellerDto.getName());
+            seller.setItems(sellerDto.getItems());
+        } else {
+            throw new Exception("Insufficient data");
+        }
+        seller = sellerRepository.save(seller);
+        sellerDto = new SellerDTO();
+        sellerDto.setId(seller.getId());
+        sellerDto.setName(seller.getName());
+        sellerDto.setItems(seller.getItems());
+        return sellerDto;
     }
 
     public List<Seller> getByName(String name) {
