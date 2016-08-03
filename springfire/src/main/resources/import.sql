@@ -12,3 +12,6 @@ insert into SELLER(id,name) values (301,'WOW Electronics')
 
 insert into ITEM_SELLER_MAPPING (item_id,seller_id) values(201,301)
 
+-- User credential table
+insert into USER(name,password,role) values('hippo','password123','admin')
+insert into USER(name,password,role) values('mouse','password123','user')
