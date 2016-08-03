@@ -6,6 +6,9 @@ insert into SALE_ORDER(item, amount,order_detail_id) values ('mobile', 20,102)
 
 insert into SALE_CATEGORY(id,name, description) values (1,'Electonics','Electronic item like laptops and mobiles')
 
-insert into SALE_ITEM(name, mrp,item_category_id) values ('laptop', 101,1)
+insert into SALE_ITEM(id,name, mrp,item_category_id) values (201,'laptop', 100,1)
 
+insert into SELLER(id,name) values (301,'WOW Electronics')
+
+insert into ITEM_SELLER_MAPPING (item_id,seller_id) values(201,301)
 
