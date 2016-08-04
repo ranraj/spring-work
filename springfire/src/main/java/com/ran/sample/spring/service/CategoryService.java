@@ -1,13 +1,13 @@
 package com.ran.sample.spring.service;
 
+import com.ran.sample.spring.dto.CategoryDTO;
+
 import java.util.List;
 
-import com.ran.sample.spring.model.Category;
-
 public interface CategoryService {
-    List<Category> getAllCategories();
+    List<CategoryDTO> getAllCategories();
 
-    Category create(Category category);
+    CategoryDTO create(CategoryDTO category);
 
-    List<Category> getByName(String name);
+    CategoryDTO getByName(String name) throws Exception;
 }

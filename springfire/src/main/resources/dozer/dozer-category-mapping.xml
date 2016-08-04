@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <mapping trim-strings="true" map-null="false" type="one-way" map-id="categoryList">
+		<class-a>com.ran.sample.spring.model.Category</class-a>
+		<class-b>com.ran.sample.spring.dto.CategoryDTO</class-b>
+		<field copy-by-reference="true">
+			<a>id</a>
+			<b>id</b>
+		</field>
+		<field copy-by-reference="true">
+			<a>name</a>
+			<b>name</b>
+		</field>
+		<field copy-by-reference="true">
+			<a>description</a>
+			<b>description</b>
+		</field>
+		<field-exclude>
+			<a>items</a>
+			<b>items</b>
+		</field-exclude>
+	</mapping>
+
+</mappings>

@@ -28,4 +28,10 @@ public class SellerDTO extends AbstractDTO {
     public void setItems(Set<SaleItem> items) {
         this.items = items;
     }
+
+    @Override
+    public String toString() {
+        return "SellerDTO [getName()=" + getName() + ", getItems()=" + getItems() + ", getId()=" + getId() + "]";
+    }
+
 }
