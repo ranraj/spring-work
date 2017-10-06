@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6">
+
+				<!-- Save Alert Messages -->
+				<div th:if="${saveOrder eq 'unsuccess'}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>Error!</strong> Order Data Not Saved.
+					</div>
+				</div>
+				<div th:if="${saveOrder eq 'success'}">
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<strong>Success!</strong> Order Data Saved Successfully.
+					</div>
+				</div>
+
+				<!-- Deletion Alert Messages -->
+				<div th:if="${deletion eq 'unsuccess'}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>Error!</strong> Order Data Not Deleted.
+					</div>
+				</div>
+				<div th:if="${deletion eq 'success'}">
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<strong>Success!</strong> Order Data Deleted Successfully.
+					</div>
+				</div>
+
+				<!-- Edit Alert Message -->
+				<div th:if="${status eq 'notfound'}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>Error!</strong> Invalid Order.
+					</div>
+				</div>
+				<div th:if="${edit eq 'unsuccess'}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>Error!</strong> Order Data Not Edited.
+					</div>
+				</div>
+				<div th:if="${edit eq 'success'}">
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<strong>Success!</strong> Order Data Edited Successfully.
+					</div>
+				</div>
+
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">Add Order</h3>
+					</div>
+					<div class="panel-body">
+						<form th:object="${order}" th:action="@{/order/save}"
+							action="#" method="post">
+							<input type="text" th:field="*{orderId}" class="form-control"
+								placeholder="Order Name" />
+							<div style="clear: both; display: block; height: 10px;"></div>
+							<input type="text" th:field="*{item}"
+								class="form-control" placeholder="Order Item" />
+							<div style="clear: both; display: block; height: 10px;"></div>
+							<input type="text" th:field="*{amount}" class="form-control"
+								placeholder="Order Salary (000.00)" />
+							<div style="clear: both; display: block; height: 10px;"></div>
+							<input type="submit" class="btn btn-danger pull-right"
+								value="Save"/>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	
+	List of users
+	<a href="users/add">Add new user</a>
+	<div class="panel-body">
+		<table class="table table-bordered">
+			<thead>
+				<tr class="btn-success">
+					<th>Order ID</th>
+					<th>Item</th>
+					<th>Amount</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${#lists.isEmpty(orders)}" class="btn-warning">
+					<td colspan="4" align="center">No Employee Registered Yet!!!</td>
+				</tr>
+				<tr th:each="order : ${orders}">
+					<td th:text="${order.orderId}"></td>
+					<td th:text="${order.item}"></td>
+					<td th:text="${order.amount}"></td>
+					<td align="center"><a
+						th:href="@{/order/edit/{id}(id=${order.orderId})}">Edit</a> &nbsp; &nbsp; <a
+						th:href="@{/order/delete/{id}(id=${order.orderId})}">Delete</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+		</div>	
+</body>
+</html>

@@ -15,7 +15,7 @@ public class SaleOrder {
     private String item;
     private double amount;
 
-    protected SaleOrder() {
+    public SaleOrder() {
     }
 
     public SaleOrder(String item, double amount) {
@@ -23,19 +23,32 @@ public class SaleOrder {
         this.amount = amount;
     }
 
+
     public long getOrderId() {
-        return orderId;
-    }
+		return orderId;
+	}
 
-    public String getItem() {
-        return item;
-    }
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
+	}
 
-    public double getAmount() {
-        return amount;
-    }
+	public String getItem() {
+		return item;
+	}
 
-    @Override
+	public void setItem(String item) {
+		this.item = item;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	@Override
     public String toString() {
         return String.format("SaleOrder [orderId=%d, item='%s', lastName='%s']", orderId, item, amount);
     }

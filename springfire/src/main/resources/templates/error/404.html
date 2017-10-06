@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring-boot : fire samples</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div class="container">
+		<h1 th:text="${title}">Title</h1>
+		
+		<div>
+			Error type=<span th:text="${error}">Bad</span>,
+			status=<span th:text="${status}">500</span>.
+		</div>
+		<div th:text="${message}">Not content</div>
+		<div>Please contact the operator with the above information.</div>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<ul class="nav">
+					<li><a th:href="@{/}" href="home.html">Go back to Home </a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

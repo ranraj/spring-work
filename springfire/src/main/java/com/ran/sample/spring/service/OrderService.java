@@ -5,9 +5,15 @@ import com.ran.sample.spring.model.SaleOrder;
 import java.util.List;
 
 public interface OrderService {
-    List<SaleOrder> getAllOrders();
+	List<SaleOrder> getAllOrders();
 
-    SaleOrder createOrder(SaleOrder saleOrder);
+	SaleOrder createOrder(SaleOrder saleOrder);
 
-    List<SaleOrder> getByItem(String item);
+	List<SaleOrder> getByItem(String item);
+
+	SaleOrder getOrder(long orderId);
+
+	boolean deleteOrder(long orderId);
+	
+	SaleOrder updateOrder(SaleOrder saleOrder);
 }

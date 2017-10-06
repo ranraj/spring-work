@@ -22,11 +22,31 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public SaleOrder createOrder(SaleOrder saleOrder) {
-        return saleOrderRepository.save(saleOrder);
+        return saleOrderRepository.saveAndFlush(saleOrder);
     }
 
     @Override
     public List<SaleOrder> getByItem(String item) {
         return saleOrderRepository.findByItem(item);
     }
+
+	@Override
+	public boolean deleteOrder(long orderId) {
+		SaleOrder temp = saleOrderRepository.findOne(orderId);
+		if(temp!=null){
+			saleOrderRepository.delete(orderId);
+			 return true;
+		}
+		return false;
+	}
+
+	@Override
+	public SaleOrder getOrder(long orderId) {
+		return saleOrderRepository.findOne(orderId);
+	}
+
+	@Override
+	public SaleOrder updateOrder(SaleOrder saleOrder) {
+		return saleOrderRepository.save(saleOrder);
+	}
 }

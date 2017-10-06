@@ -1,4 +1,4 @@
-package com.ran.sample.spring.controller;
+package com.ran.sample.spring.controller.resource;
 
 import com.ran.sample.spring.model.SaleOrder;
 import com.ran.sample.spring.service.impl.OrderServiceImpl;
@@ -19,7 +19,7 @@ import java.io.FileOutputStream;
 import java.util.List;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("api/v1.0/order")
 public class OrderApiController {
 
     @Autowired
