@@ -1,3 +1,7 @@
+mvn install -DskipTests
+
+mvn spring-boot:run
+
 ```
 Url : http://localhost:8082/account/101/wallet GET
 
