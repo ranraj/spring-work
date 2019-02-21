@@ -8,22 +8,23 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
 
 import com.ran.spring.batch.model.User;
+import com.ran.spring.batch.model.UserSync;
 
 @Component
-public class Processor implements ItemProcessor<User, User> {
-	
-	private static final Map<String,String> DEPT_NAMES = new HashMap<>();
-	static{
-		DEPT_NAMES.put("001", "Dev");
-		DEPT_NAMES.put("002", "Ops");
-		DEPT_NAMES.put("003", "QA");
+public class Processor implements ItemProcessor<UserSync, User> {
+
+	private static final Map<Integer, String> DEPT_NAMES = new HashMap<>();
+	static {
+		DEPT_NAMES.put(001, "Dev");
+		DEPT_NAMES.put(002, "Ops");
+		DEPT_NAMES.put(003, "QA");
 	}
+
 	@Override
-	public User process(User user) throws Exception {
-		
-		String deptCode = user.getDept();
-		user.setDept(DEPT_NAMES.get(deptCode));
-        user.setTime(new Date());
+	public User process(UserSync userSync) throws Exception {
+		Integer deptCode = userSync.getDept();
+		User user = new User(userSync.getId(), userSync.getName(), DEPT_NAMES.get(deptCode), userSync.getSalary(),
+				new Date());
 		return user;
 	}
 
