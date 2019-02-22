@@ -2,12 +2,12 @@ package com.ran.spring.batch.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.ran.spring.batch.model.UserSync;
 
-public interface UserSyncRepository extends JpaRepository<UserSync, Integer> {
+public interface UserSyncRepository extends PagingAndSortingRepository<UserSync, Integer> {
 	@Query(
 			value = "SELECT us FROM UserSync us WHERE us.status=?1 OR us.status=?2",
 			countQuery = "SELECT count(us) FROM UserSync us WHERE us.status=?1 OR us.status=?2",

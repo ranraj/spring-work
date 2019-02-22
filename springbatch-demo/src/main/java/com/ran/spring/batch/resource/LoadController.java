@@ -22,17 +22,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/load")
 public class LoadController {
 	@Autowired
-	JobLauncher jobLauncher;
+	private JobLauncher jobLauncher;
 	
 	@Autowired
-	Job job;
+	private Job job;
+	
+	private JobExecution jobExec = null;
 	
 	@GetMapping
 	public BatchStatus load() throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
 		Map<String, JobParameter> map = new HashMap<String, JobParameter>();
 		map.put("time", new JobParameter(System.currentTimeMillis()));
 		JobParameters jobParameters = new JobParameters(map);
-		JobExecution jobExec = jobLauncher.run(job, jobParameters );
+		jobExec = jobLauncher.run(job, jobParameters );
 		while(jobExec.isRunning()) {
 			System.out.println("System is running..");
 		}
@@ -40,5 +42,11 @@ public class LoadController {
 	}
 	public void stop() {
 		
+		if(!jobExec.isRunning()) {
+			jobExec.stop();
+		}
+		if(!jobExec.isStopping()) {
+			System.out.println("Stopping the process");
+		}
 	}
 }
